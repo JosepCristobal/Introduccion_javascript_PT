@@ -10,7 +10,7 @@ try {
 
     const teamNames = worldCup.teams.map(team => team.name)
 
-    teamNames.forEach(function(equipo) {
+    teamNames.forEach((equipo) =>{
         console.log(equipo)
     })
 
@@ -18,7 +18,8 @@ try {
     //Verificamos que se han asignado los grupos de forma correcta
     console.table(worldCup.teams)
 
+    worldCup.createRound()
+
 } catch (error) {
     console.error('ERROR: ',error)
 }
-

@@ -58,6 +58,7 @@ export default class GroupStage {
                 team.group = this.range[x-1]
                 console.log(team.name, team.group)
             });
+            
         }
     }
 
@@ -65,7 +66,7 @@ export default class GroupStage {
     groupsName () {
         this.range=[]
         let start = 65
-        let end = this.teams.length + start -1
+        let end = (this.teams.length/this.config.teamsXgroup) + start -1
         let step = 1
 
         while (step > 0 ? end >= start : end <= start) {
@@ -74,6 +75,42 @@ export default class GroupStage {
         }
     }
 
+    createRound() {
+        // https://es.wikipedia.org/wiki/Sistema_de_todos_contra_todos
+        const groupsStage = []
+        this.initSchedule(groupsStage)
+        this.setLocalTeams(groupsStage)
+        //this.setAwayTeams(newRound)
+        //this.fixLastTeamSchedule(newRound)
+        //return newRound
+        console.table(groupsStage[0,0])
+    }
+
+    //Iniciamos el array con datos neutros para todos los grupos/jornadas/partidos
+    initSchedule(groupsStage) {
+        const numberOfMatchDays = this.config.teamsXgroup - 1
+        const numberOfMatchesPerMatchDay = this.config.teamsXgroup / 2
+        const numberOfGroups= this.range.length
+        console.log(`numberOfMatchDays= ${this.config.teamsXgroup - 1} numberOfMatchesPerMatchDay= ${this.config.teamsXgroup / 2} numberOfGroups=  ${this.range.length}`)
+        //const groupsStage=[]
+         for (let k = 0; k<numberOfGroups; k++){
+            const groupA = this.range[k]
+            const round2=[]
+            console.log(groupA)
+            for (let i = 0; i < numberOfMatchDays; i++) {
+                const matchDay = []  // jornada vacía
+                for (let j = 0; j < numberOfMatchesPerMatchDay; j++) {
+                    const match = [`Equipo A Gr: ${this.range[k]}`, `Equipo B Gr: ${this.range[k]}`]  // partido
+                    matchDay.push(match)
+                }
+                // una vez añadidos todos los partidos a la jornada
+                round2.push(matchDay)  // añadimos la jornada a la planificación
+            }
+            //console.log(round2)
+            groupsStage.push(round2)
+         }  
+    }
+    //Iniciamos al relleno del equipo A en cada partido de cada jornada de cada grupo
 
 
 }
