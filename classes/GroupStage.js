@@ -80,14 +80,14 @@ export default class GroupStage {
         const groupsStage = []
         this.initSchedule(groupsStage)
         this.setTeamsA(groupsStage)
-        //this.setAwayTeams(newRound)
-        //this.fixLastTeamSchedule(newRound)
+        this.setTeamsB(groupsStage)
+        this.fixLastTeamSchedule(groupsStage)
         //return newRound
         console.table(groupsStage[0,0])
-        //console.table(groupsStage[0,1])
+        console.table(groupsStage[0,1])
         //console.table(groupsStage[0,2])
-        console.table(groupsStage[1,5][0,0][0,0])
-        console.table(groupsStage)
+        //console.table(groupsStage[1,5][0,0][0,0])
+        //console.table(groupsStage)
     }
 
     //Iniciamos el array con datos neutros para todos los grupos/jornadas/partidos
@@ -119,19 +119,19 @@ export default class GroupStage {
     //Iniciamos al relleno del equipo A en cada partido de cada jornada de cada grupo
     setTeamsA(groupsStage) {
         //Tendremos que recorrer en un primer bucle, todos los eqipos por cada uno de los diferentes grupos
-        const numberOfGroups = this.range.length
+        //const numberOfGroups = this.range.length
         let groupIndex = 0
         groupsStage.forEach(round =>{
             const teamNames = this.getTeamNamesGroup(this.range[groupIndex])
             groupIndex++
-            const maxHomeTeams = teamNames.length - 2
+            const maxTeamsA = teamNames.length - 2
             let teamIndex = 0
             round.forEach(matchDay => { // por cada jornada
                 matchDay.forEach(match => { // por cada partido de cada jornada
                     // establecer el equipo A
                     match[TEAM_A] = teamNames[teamIndex]
                     teamIndex++
-                    if (teamIndex > maxHomeTeams) {
+                    if (teamIndex > maxTeamsA) {
                         teamIndex = 0
                     }
                 })
@@ -139,12 +139,60 @@ export default class GroupStage {
         })
     }
 
+    //Iniciamos el relleno del equipo B en cada partido de cada jornada de cada grupo
+    setTeamsB(groupsStage) {
+        //Tendremos que recorrer en un primer bucle, todos los eqipos por cada uno de los diferentes grupos
+        //const numberOfGroups = this.range.length
+        let groupIndex = 0
+        groupsStage.forEach(round =>{
+            const teamNames = this.getTeamNamesGroup(this.range[groupIndex])
+            groupIndex++
+            const maxTeamsB = teamNames.length - 2
+            let teamIndex = maxTeamsB
+            round.forEach(matchDay => {
+                let firstMatchFound = false
+                matchDay.forEach(match => {
+                    if (!firstMatchFound) {
+                        firstMatchFound = true
+                    } else {
+                        match[TEAM_B] = teamNames[teamIndex]
+                        teamIndex--
+                        if (teamIndex < 0) {
+                            teamIndex = maxTeamsB
+                        }
+                    }
+                })
+            })
+        })
+    }
+
+    fixLastTeamSchedule(groupsStage) {
+        let groupIndex = 0
+        groupsStage.forEach(round =>{
+            let matchDayNumber = 1
+            const teamNames = this.getTeamNamesGroup(this.range[groupIndex])
+            groupIndex++
+            const lastTeamName = teamNames[teamNames.length - 1]
+            round.forEach(matchDay => {
+                const firstMatch = matchDay[0]
+                if (matchDayNumber % 2 == 0) { // si jornada par -> juega en A
+                    firstMatch[TEAM_B] = firstMatch[TEAM_A]
+                    firstMatch[TEAM_A] = lastTeamName
+                } else { // jornada impar -> juega en B
+                    firstMatch[TEAM_B] = lastTeamName
+                }
+                matchDayNumber++
+            })
+        })
+    }
+    
+
     getTeamNamesGroup(group) {
+        //Devolvemos los equipos del grupo solicitado.
         const teamsInGroup = this.teams.filter(gr => gr.group == group).map(team => team.name)
         console.log(teamsInGroup)
+        3=4
         return teamsInGroup
-
-        //return this.teams.map(team => team.name)
     }
 
 }
