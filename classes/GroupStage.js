@@ -83,11 +83,12 @@ export default class GroupStage {
         this.setTeamsB(groupsStage)
         this.fixLastTeamSchedule(groupsStage)
         //return newRound
-        console.table(groupsStage[0,0])
-        console.table(groupsStage[0,1])
+        //console.table(groupsStage[0,0])
+        //console.table(groupsStage[0,1])
         //console.table(groupsStage[0,2])
         //console.table(groupsStage[1,5][0,0][0,0])
         //console.table(groupsStage)
+        return groupsStage
     }
 
     //Iniciamos el array con datos neutros para todos los grupos/jornadas/partidos
@@ -98,9 +99,9 @@ export default class GroupStage {
         console.log(`numberOfMatchDays= ${this.config.teamsXgroup - 1} numberOfMatchesPerMatchDay= ${this.config.teamsXgroup / 2} numberOfGroups=  ${this.range.length}`)
         //const groupsStage=[]
          for (let k = 0; k<numberOfGroups; k++){
-            const groupA = this.range[k]
+            //const groupA = this.range[k]
             const round2=[]
-            console.log(groupA)
+            //console.log(groupA)
             for (let i = 0; i < numberOfMatchDays; i++) {
                 const matchDay = []  // jornada vacía
                 for (let j = 0; j < numberOfMatchesPerMatchDay; j++) {
@@ -112,14 +113,13 @@ export default class GroupStage {
             }
            
             groupsStage.push(round2)
-            console.log(round2)
+            //console.log(round2)
          }
            
     }
     //Iniciamos al relleno del equipo A en cada partido de cada jornada de cada grupo
     setTeamsA(groupsStage) {
         //Tendremos que recorrer en un primer bucle, todos los eqipos por cada uno de los diferentes grupos
-        //const numberOfGroups = this.range.length
         let groupIndex = 0
         groupsStage.forEach(round =>{
             const teamNames = this.getTeamNamesGroup(this.range[groupIndex])
@@ -142,7 +142,6 @@ export default class GroupStage {
     //Iniciamos el relleno del equipo B en cada partido de cada jornada de cada grupo
     setTeamsB(groupsStage) {
         //Tendremos que recorrer en un primer bucle, todos los eqipos por cada uno de los diferentes grupos
-        //const numberOfGroups = this.range.length
         let groupIndex = 0
         groupsStage.forEach(round =>{
             const teamNames = this.getTeamNamesGroup(this.range[groupIndex])
@@ -186,12 +185,27 @@ export default class GroupStage {
         })
     }
     
+    scheduleMatchDays() {
+            const newRound = this.createRound()
+            // si la jornada es par, invertir partidos
+            // if (i % 2 != 0) {
+            //     for (const matchDay of newRound) {
+            //         for (const match of matchDay) {
+            //             const localTEam = match[LOCAL_TEAM]
+            //             match[LOCAL_TEAM] = match[AWAY_TEAM]
+            //             match[AWAY_TEAM] = localTEam
+            //         }
+            //     }
+            // }
+            //this.matchDaySchedule = this.matchDaySchedule.concat(newRound)
+            this.matchGropusSchedule = newRound
+        
+    }
 
     getTeamNamesGroup(group) {
-        //Devolvemos los equipos del grupo solicitado.
+        //Devolvemos los equipos filtrados por el grupo solicitado.
         const teamsInGroup = this.teams.filter(gr => gr.group == group).map(team => team.name)
         console.log(teamsInGroup)
-        3=4
         return teamsInGroup
     }
 
