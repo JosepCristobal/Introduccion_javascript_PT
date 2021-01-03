@@ -79,11 +79,15 @@ export default class GroupStage {
         // https://es.wikipedia.org/wiki/Sistema_de_todos_contra_todos
         const groupsStage = []
         this.initSchedule(groupsStage)
-        this.setLocalTeams(groupsStage)
+        this.setTeamsA(groupsStage)
         //this.setAwayTeams(newRound)
         //this.fixLastTeamSchedule(newRound)
         //return newRound
         console.table(groupsStage[0,0])
+        //console.table(groupsStage[0,1])
+        //console.table(groupsStage[0,2])
+        console.table(groupsStage[1,5][0,0][0,0])
+        console.table(groupsStage)
     }
 
     //Iniciamos el array con datos neutros para todos los grupos/jornadas/partidos
@@ -100,18 +104,48 @@ export default class GroupStage {
             for (let i = 0; i < numberOfMatchDays; i++) {
                 const matchDay = []  // jornada vacía
                 for (let j = 0; j < numberOfMatchesPerMatchDay; j++) {
-                    const match = [`Equipo A Gr: ${this.range[k]}`, `Equipo B Gr: ${this.range[k]}`]  // partido
+                    const match = [`Equipo A Gr: ${this.range[k]}  dia ${i} partido ${j}`, `Equipo B Gr: ${this.range[k]}  dia ${i} partido ${j}`]  // partido
                     matchDay.push(match)
                 }
                 // una vez añadidos todos los partidos a la jornada
                 round2.push(matchDay)  // añadimos la jornada a la planificación
             }
-            //console.log(round2)
+           
             groupsStage.push(round2)
-         }  
+            console.log(round2)
+         }
+           
     }
     //Iniciamos al relleno del equipo A en cada partido de cada jornada de cada grupo
+    setTeamsA(groupsStage) {
+        //Tendremos que recorrer en un primer bucle, todos los eqipos por cada uno de los diferentes grupos
+        const numberOfGroups = this.range.length
+        let groupIndex = 0
+        groupsStage.forEach(round =>{
+            const teamNames = this.getTeamNamesGroup(this.range[groupIndex])
+            groupIndex++
+            const maxHomeTeams = teamNames.length - 2
+            let teamIndex = 0
+            round.forEach(matchDay => { // por cada jornada
+                matchDay.forEach(match => { // por cada partido de cada jornada
+                    // establecer el equipo A
+                    match[TEAM_A] = teamNames[teamIndex]
+                    teamIndex++
+                    if (teamIndex > maxHomeTeams) {
+                        teamIndex = 0
+                    }
+                })
+            })
+        })
+    }
 
+    getTeamNamesGroup(group) {
+        const teamsInGroup = this.teams.filter(gr => gr.group == group).map(team => team.name)
+        console.log(teamsInGroup)
+        return teamsInGroup
+
+        //return this.teams.map(team => team.name)
+    }
 
 }
 
