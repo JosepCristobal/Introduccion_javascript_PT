@@ -10,9 +10,9 @@ try {
 
     const teamNames = worldCup.teams.map(team => team.name)
 
-    teamNames.forEach((equipo) =>{
-        console.log(equipo)
-    })
+    // teamNames.forEach((equipo) =>{
+    //     console.log(equipo)
+    // })
 
     worldCup.generateGroups()
     //Verificamos que se han asignado los grupos de forma correcta
@@ -33,7 +33,7 @@ try {
         console.log(" ")
         console.log(`GRUPO ${groupName}`)
         console.log("----------------------")
-        console.log(" ")
+        //console.log(" ")
 
         let i = 1
         round.forEach(matchDay => {
@@ -48,8 +48,8 @@ try {
         })
     })
 
-    // Comenzamos la liga
-    //premier.start()
+    // Comenzamos La Eliminatoria del Mundial
+    worldCup.start()
 
 } catch (error) {
     console.error('ERROR: ',error)

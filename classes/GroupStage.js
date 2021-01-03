@@ -9,7 +9,7 @@ export default class GroupStage {
         this.matchGroupsSchedule = []
         this.setup(config)
         this.setupTeams(teams)
-        //this.summaries = []
+        this.summaries = []
     }
 
     setup(config) {
@@ -37,8 +37,8 @@ export default class GroupStage {
     }
 
     generateGroups(){
-        console.log(this.teams.length)
-        console.log(this.config.teamsXgroup)
+        //console.log(this.teams.length)
+        //console.log(this.config.teamsXgroup)
         if (this.teams.length % this.config.teamsXgroup != 0){
             console.log(`Los equipos son ${this.teams.length} y no es posible hecer grupos de ${this.config.teamsXgroup}`)
             throw TypeError(`Los equipos son ${this.teams.length} y no es posible hecer grupos de ${this.config.teamsXgroup}`);
@@ -96,7 +96,7 @@ export default class GroupStage {
         const numberOfMatchDays = this.config.teamsXgroup - 1
         const numberOfMatchesPerMatchDay = this.config.teamsXgroup / 2
         const numberOfGroups= this.range.length
-        console.log(`numberOfMatchDays= ${this.config.teamsXgroup - 1} numberOfMatchesPerMatchDay= ${this.config.teamsXgroup / 2} numberOfGroups=  ${this.range.length}`)
+        console.log(`numberOfMatchDays= ${this.config.teamsXgroup - 1} numberOfMatchesPerMatchDay= ${this.config.teamsXgroup / 2} numberOfGroups= ${this.range.length} Total Equipos= ${this.teams.length}`)
         //const groupsStage=[]
          for (let k = 0; k<numberOfGroups; k++){
             //const groupA = this.range[k]
@@ -202,10 +202,14 @@ export default class GroupStage {
         
     }
 
+    start(){
+        console.log("EMPEZAMOS!!!")
+    }
+
     getTeamNamesGroup(group) {
         //Devolvemos los equipos filtrados por el grupo solicitado.
         const teamsInGroup = this.teams.filter(gr => gr.group == group).map(team => team.name)
-        console.log(teamsInGroup)
+        //console.log(teamsInGroup)
         return teamsInGroup
     }
 
