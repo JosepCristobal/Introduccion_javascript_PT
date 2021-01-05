@@ -1,12 +1,12 @@
 //Inicio de nuestra práctica de introducción a Javascript
 
 import { worldTeams } from './teams.js'
-import GroupStage from './classes/GroupStage.js'
+import PointsWorldCup from './classes/PointsWorldCup.js'
 
 try {
     console.log(worldTeams)
     const config = { rounds: 1 }
-    const worldCup = new GroupStage('Group Stage', worldTeams, config)
+    const worldCup = new PointsWorldCup('Group Stage', worldTeams, config)
 
     const teamNames = worldCup.teams.map(team => team.name)
 
