@@ -51,6 +51,83 @@ try {
     // Comenzamos La Eliminatoria del Mundial
     worldCup.start()
 
+    // mostrar por pantalla los resultados de cada grupo, jornada y la clasificación
+    
+    let i = 1
+    worldCup.summariesGroup.forEach(summaryGroup => {
+        
+        console.log(' ')
+        console.log(`RESUMEN GRUPO ${worldCup.range[i-1]}`)
+        console.log('----------------------------')
+        let j = 1
+        summaryGroup.forEach(summary => {
+            console.log(`Jornada ${j} del grupo ${worldCup.range[i-1]}` )
+            j++
+            summary.results.forEach(result =>{
+                console.log(`${result.a_Team} ${result.goals_A} - ${result.goals_B} ${result.b_Team}`)
+            
+            })
+
+        console.table(summary.standings.filter((gr => gr.group == worldCup.range[i-1])).map(team => {
+            return {
+                Group: team.group,
+                Team: team.name,
+                Points: team.points,
+                PlayedMatches: team.matchesWon + team.matchesDrawn + team.matchesLost,
+                Won: team.matchesWon,
+                Drawn: team.matchesDrawn,
+                Lost: team.matchesLost,
+                GoalsFor: team.goalsFor,
+                GoalsAgainst: team.goalsAgainst,
+                GoalsDiff: team.goalsFor - team.goalsAgainst
+            }
+        }))
+
+            
+        })
+        // console.table(summaryGroup.standings.map(team => {
+        //     return {
+        //         Group: team.group,
+        //         Team: team.name,
+        //         Points: team.points,
+        //         PlayedMatches: team.matchesWon + team.matchesDrawn + team.matchesLost,
+        //         Won: team.matchesWon,
+        //         Drawn: team.matchesDrawn,
+        //         Lost: team.matchesLost,
+        //         GoalsFor: team.goalsFor,
+        //         GoalsAgainst: team.goalsAgainst,
+        //         GoalsDiff: team.goalsFor - team.goalsAgainst
+        //     }
+        // }))
+        i++
+    })
+    
+    // Fin Mostrar por pantalla los resultados de cada grupo
+    // let i = 1
+    // worldCup.summaries.forEach(summary => {
+
+    //     console.log(`RESUMEN JORNADA ${i}`)
+    //     summary.results.forEach(result => {
+    //         console.log(`${result.a_Team} ${result.goals_A} - ${result.goals_B} ${result.b_Team}`)
+    //     })
+    //     console.table(summary.standings.map(team => {
+    //         return {
+    //             Group: team.group,
+    //             Team: team.name,
+    //             Points: team.points,
+    //             PlayedMatches: team.matchesWon + team.matchesDrawn + team.matchesLost,
+    //             Won: team.matchesWon,
+    //             Drawn: team.matchesDrawn,
+    //             Lost: team.matchesLost,
+    //             GoalsFor: team.goalsFor,
+    //             GoalsAgainst: team.goalsAgainst,
+    //             GoalsDiff: team.goalsFor - team.goalsAgainst
+    //         }
+    //     }))
+    //     i++
+    // })
+
+
 } catch (error) {
     console.error('ERROR: ',error)
 }

@@ -99,5 +99,29 @@ export default class PointsWorldCup extends GroupStage {
             }
         })
     }
+    getStandings2(){
+        this.teams.sort(function(teamA, teamB){         
+               if (teamA.group === teamB.group) {
+                  // La Clasificación es solo importante cuando los equipos son de mismo grupo
+                  if (teamA.points > teamB.points){
+                    return -1
+                } else if (teamA.points < teamB.points){
+                    return 1
+                } else{
+                    const goalsDiffA = teamA.goalsFor - teamA.goalsAgainst
+                    const goalsDiffB = teamB.goalsFor - teamB.goalsAgainst
+                    if (goalsDiffA > goalsDiffB) {
+                        return -1
+                    } else if (goalsDiffA < goalsDiffB) {
+                        return 1
+                    } else {
+                        return 0
+                    }
+    
+                }
+               }
+               return teamA.group > teamB.group ? 1 : -1;
+            });
+    }
 
 }

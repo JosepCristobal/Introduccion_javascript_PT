@@ -10,6 +10,7 @@ export default class GroupStage {
         this.setup(config)
         this.setupTeams(teams)
         this.summaries = []
+        this.summariesGroup = []
     }
 
     setup(config) {
@@ -203,7 +204,30 @@ export default class GroupStage {
     }
 
     start(){
-        console.log("EMPEZAMOS!!!")
+        console.log(' ')
+        console.log("EMPEZAMOS LA FASE DE GRUPOS!!!")
+
+    for(const round of this.matchGropusSchedule ){
+        for (const matchDay of round) {
+            const matchDaySummary = {
+                results: [],
+                standings: undefined
+            }
+            for (const match of matchDay) {
+                const result = this.play(match)
+                this.updateTeams(result)  // actualizamos los equipos con el resultado de partido
+                matchDaySummary.results.push(result)
+            }
+            // Calcular clasificación
+            this.getStandings2()
+            matchDaySummary.standings = this.teams.map(team => Object.assign({}, team))
+            // Guardar resumen de la jornada
+            this.summaries.push(matchDaySummary)
+        }
+        this.summariesGroup.push(this.summaries)
+        this.summaries = []
+    }
+
     }
 
     getTeamNamesGroup(group) {
@@ -212,6 +236,19 @@ export default class GroupStage {
         //console.log(teamsInGroup)
         return teamsInGroup
     }
+
+    getStandings() {
+        throw new Error('getStandings not implemented')
+    }
+
+    updateTeams(result) {
+        throw new Error('updateTeams method not implemented')
+    }
+
+    play(match) {
+        throw new Error('play method not implented')
+    }
+
 
 }
 
