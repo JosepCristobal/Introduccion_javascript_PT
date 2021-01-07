@@ -71,7 +71,7 @@ export default class GroupStage {
         let step = 1
 
         while (step > 0 ? end >= start : end <= start) {
-            this.range.push(String.fromCharCode(start));
+            this.range.push(String.fromCharCode(start))
             start += step;
         }
     }

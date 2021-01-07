@@ -2,6 +2,7 @@
 
 import { worldTeams } from './teams.js'
 import PointsWorldCup from './classes/PointsWorldCup.js'
+import KnockoutStage from './classes/KnockoutStage.js'
 
 try {
     console.log(worldTeams)
@@ -107,6 +108,8 @@ try {
     console.log('Equipos que pasan a la final')
     console.table(teamGroup)
     
+    const worldFinal = new KnockoutStage('Finales',teamGroup)
+    worldFinal.generateRounds( worldFinal.fTeamsA)
     // Fin Mostrar por pantalla los resultados de cada grupo
     // let i = 1
     // worldCup.summaries.forEach(summary => {
