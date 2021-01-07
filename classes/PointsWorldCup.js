@@ -80,26 +80,6 @@ export default class PointsWorldCup extends GroupStage {
     }
 
     getStandings(){
-        this.teams.sort(function(teamA, teamB){
-            if (teamA.points > teamB.points){
-                return -1
-            } else if (teamA.points < teamB.points){
-                return 1
-            } else{
-                const goalsDiffA = teamA.goalsFor - teamA.goalsAgainst
-                const goalsDiffB = teamB.goalsFor - teamB.goalsAgainst
-                if (goalsDiffA > goalsDiffB) {
-                    return -1
-                } else if (goalsDiffA < goalsDiffB) {
-                    return 1
-                } else {
-                    return 0
-                }
-
-            }
-        })
-    }
-    getStandings2(){
         this.teams.sort(function(teamA, teamB){         
                if (teamA.group === teamB.group) {
                   // La Clasificación es solo importante cuando los equipos son de mismo grupo
@@ -108,6 +88,10 @@ export default class PointsWorldCup extends GroupStage {
                 } else if (teamA.points < teamB.points){
                     return 1
                 } else{
+                    //Si estan empatados deberemos utilizar los criterios de ordenación siguientes.
+                    //1º El equipo que haya ganado al otro en el enfrentamiento entre ambos.
+                    //2º Si hay empate en el punto uno, será por la diferencia de goles.
+                    //3º En tercer lugar, será primero el equipo por orden alfabético.
                     const goalsDiffA = teamA.goalsFor - teamA.goalsAgainst
                     const goalsDiffB = teamB.goalsFor - teamB.goalsAgainst
                     if (goalsDiffA > goalsDiffB) {

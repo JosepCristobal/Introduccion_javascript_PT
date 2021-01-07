@@ -54,8 +54,9 @@ try {
     // mostrar por pantalla los resultados de cada grupo, jornada y la clasificación
     
     let i = 1
+    const teamGroup = []
+    const worldCupElements = worldCup.summariesGroup.length
     worldCup.summariesGroup.forEach(summaryGroup => {
-        
         console.log(' ')
         console.log(`RESUMEN GRUPO ${worldCup.range[i-1]}`)
         console.log('----------------------------')
@@ -67,8 +68,7 @@ try {
                 console.log(`${result.a_Team} ${result.goals_A} - ${result.goals_B} ${result.b_Team}`)
             
             })
-
-        console.table(summary.standings.filter((gr => gr.group == worldCup.range[i-1])).map(team => {
+            const tableGroup = summary.standings.filter((gr => gr.group == worldCup.range[i-1])).map(team => {
             return {
                 Group: team.group,
                 Team: team.name,
@@ -81,26 +81,31 @@ try {
                 GoalsAgainst: team.goalsAgainst,
                 GoalsDiff: team.goalsFor - team.goalsAgainst
             }
-        }))
-
-            
         })
-        // console.table(summaryGroup.standings.map(team => {
-        //     return {
-        //         Group: team.group,
-        //         Team: team.name,
-        //         Points: team.points,
-        //         PlayedMatches: team.matchesWon + team.matchesDrawn + team.matchesLost,
-        //         Won: team.matchesWon,
-        //         Drawn: team.matchesDrawn,
-        //         Lost: team.matchesLost,
-        //         GoalsFor: team.goalsFor,
-        //         GoalsAgainst: team.goalsAgainst,
-        //         GoalsDiff: team.goalsFor - team.goalsAgainst
-        //     }
-        // }))
+
+        // 
+
+        // 
+        //console.log(`Valor de J ${j}, valor de i ${i}`)
+        console.table(tableGroup)
+        
+        //tableGroup.forEach(element => {console.log(element.Group,element.Team) })
+        if (worldCupElements/worldCup.range.length == j-3){
+            for (let x = 0; x < 2; x++){
+                console.log(`${x+1}ª posición para el grupo ${tableGroup[x].Group} es ${tableGroup[x].Team}`)
+                const match = [tableGroup[x].Group,tableGroup[x].Team]
+                teamGroup.push(match)
+            }
+        }
+        
+        })
         i++
+        
     })
+    
+    console.log('')
+    console.log('Equipos que pasan a la final')
+    console.table(teamGroup)
     
     // Fin Mostrar por pantalla los resultados de cada grupo
     // let i = 1

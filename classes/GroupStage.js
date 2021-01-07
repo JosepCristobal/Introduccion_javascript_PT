@@ -219,7 +219,7 @@ export default class GroupStage {
                 matchDaySummary.results.push(result)
             }
             // Calcular clasificación
-            this.getStandings2()
+            this.getStandings()
             matchDaySummary.standings = this.teams.map(team => Object.assign({}, team))
             // Guardar resumen de la jornada
             this.summaries.push(matchDaySummary)
