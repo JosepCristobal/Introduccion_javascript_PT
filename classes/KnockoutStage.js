@@ -13,7 +13,7 @@ export default class KnockoutStage {
     setupTeamsA(teamNames) {
         this.fTeamsA = []
         let numTeams = teamNames.length/2
-        console.log(numTeams)
+        //console.log(numTeams)
         for (let i = 0; i < numTeams ; i +=2 ) {
             let team =[] 
             team = teamNames[i]
@@ -76,13 +76,14 @@ export default class KnockoutStage {
         this.matches = []
         let match = []
         let matchResult = []
-        for (let i = 0; i < teamsG.length -1 ; i++ ) {
-            let matchResult = []
+        for (let i = 0; i < teamsG.length ; i +=2 ) {
+            matchResult = []
+            match = []
             match = [teamsG[i],teamsG[i+1]]
             matchResult = this.play(match)
             this.matches.push(matchResult)
         }
-        console.table(this.matches)
+        //console.table(this.matches)
     }
 
 }

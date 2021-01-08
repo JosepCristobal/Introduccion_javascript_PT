@@ -110,30 +110,21 @@ try {
     
     const worldFinal = new KnockoutStage('Finales',teamGroup)
     worldFinal.generateRounds( worldFinal.fTeamsA)
-    // Fin Mostrar por pantalla los resultados de cada grupo
-    // let i = 1
-    // worldCup.summaries.forEach(summary => {
+    this.quarter=[]
+    //console.table(worldFinal.matches)
+    
+        console.log(' ')
+        console.log('=============================================')
+        console.log('======COMIENZA LA FASE DE ELIMINATORIAS======')
+        console.log('=============================================')
+        console.log(' ')
+        console.log('======OCTAVOS DE FINAL======')
+        console.log(' ')
 
-    //     console.log(`RESUMEN JORNADA ${i}`)
-    //     summary.results.forEach(result => {
-    //         console.log(`${result.a_Team} ${result.goals_A} - ${result.goals_B} ${result.b_Team}`)
-    //     })
-    //     console.table(summary.standings.map(team => {
-    //         return {
-    //             Group: team.group,
-    //             Team: team.name,
-    //             Points: team.points,
-    //             PlayedMatches: team.matchesWon + team.matchesDrawn + team.matchesLost,
-    //             Won: team.matchesWon,
-    //             Drawn: team.matchesDrawn,
-    //             Lost: team.matchesLost,
-    //             GoalsFor: team.goalsFor,
-    //             GoalsAgainst: team.goalsAgainst,
-    //             GoalsDiff: team.goalsFor - team.goalsAgainst
-    //         }
-    //     }))
-    //     i++
-    // })
+    worldFinal.matches.forEach(teamResult01 => {
+        console.log(`${teamResult01.a_Team[1]} ${teamResult01.goals_A} - ${teamResult01.goals_B} ${teamResult01.b_Team[1]} => ${teamResult01.winner[1]}`)
+        this.quarter.push([teamResult01.winner[0],teamResult01.winner[1]])
+    })
 
 
 } catch (error) {
