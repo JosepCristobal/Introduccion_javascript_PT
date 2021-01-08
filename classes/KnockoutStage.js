@@ -90,5 +90,68 @@ export default class KnockoutStage {
         }
         //console.table(this.matches)
     }
+    cup(winner){
+        const textWinner = this.centerText(winner,'_',14)
+        // let wd = winner.length
+        // let etq = ''
+        // if (wd>=14){
+        //     etq = winner.substring(0,14)
+        // } else {
+        //     etq = winner
+        // }
+
+        // const caracter = 16 - wd
+        // const margen = Math.floor(caracter/2)
+        // const margenDer = (caracter % 2) + margen
+        // const textWinner = '_'.repeat(margen)+etq+'_'.repeat(margenDer)
+
+        console.log('________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶')
+        console.log('________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶')
+        console.log('___¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶')
+        console.log('_¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶')
+        console.log('¶¶¶¶______¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶______¶¶¶¶')
+        console.log('¶¶¶_______¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶_______¶¶¶')
+        console.log('¶¶________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶________¶¶')
+        console.log('¶¶¶_____¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶_____¶¶¶')
+        console.log('¶¶¶____¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶____¶¶¶')
+        console.log('_¶¶¶___¶¶¶_¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶_¶¶¶___¶¶¶')
+        console.log('_¶¶¶¶___¶¶¶_¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶_¶¶¶___¶¶¶¶')
+        console.log('___¶¶¶¶__¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶__¶¶¶¶')
+        console.log('____¶¶¶¶¶¶¶¶_¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶_¶¶¶¶¶¶¶¶')
+        console.log('______¶¶¶¶¶¶__¶¶¶¶¶¶¶¶¶¶¶¶¶¶__¶¶¶¶¶¶')
+        console.log('_______________¶¶¶¶¶¶¶¶¶¶¶¶')
+        console.log('_________________¶¶¶¶¶¶¶¶')
+        console.log('___________________¶¶¶¶')
+        console.log('___________________¶¶¶¶')
+        console.log('___________________¶¶¶¶')
+        console.log('___________________¶¶¶¶')
+        console.log('_______________¶¶¶¶¶¶¶¶¶¶¶¶')
+        console.log('____________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶')
+        console.log('____________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶')
+        console.log('____________¶¶¶____________¶¶¶')
+        console.log(`____________¶${textWinner}¶`)
+        console.log('____________¶¶¶____________¶¶¶')
+        console.log('____________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶ ')
+        console.log('____________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶')
+        console.log('__________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶')
+        console.log('_________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶')
+        
+    }
+
+    centerText(textCenter,myChar,maxLength){
+        let wd = textCenter.length
+        let etq = ''
+        if (wd>=maxLength){
+            etq = textCenter.substring(0,maxLength)
+        } else {
+            etq = textCenter
+        }
+
+        const caracter = maxLength + 2 - wd
+        const margen = Math.floor(caracter/2)
+        const margenDer = (caracter % 2) + margen
+        const textWinner = myChar.repeat(margen)+etq+myChar.repeat(margenDer)
+        return textWinner
+    }
 
 }

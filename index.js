@@ -170,18 +170,20 @@ try {
     console.log(' ')
         console.log('======F I N A L======')
         console.log(' ')
+    let winnerText=''
     worldFinal.matches.forEach(teamResult05 => {
         console.log(`${teamResult05.a_Team[1]} ${teamResult05.goals_A} - ${teamResult05.goals_B} ${teamResult05.b_Team[1]} => ${teamResult05.winner[1]}`)
 
         console.log('')
         console.log('*******************************')
-        console.log('*******CAMPEÓN DEL MUNDO*******')
-        console.log(`*******    ${teamResult05.winner[1].toUpperCase()}     *******`)
+        console.log('****** CAMPEÓN DEL MUNDO ******')
+        console.log(worldFinal.centerText(' '+teamResult05.winner[1].toUpperCase()+' ', '*',29))
         console.log('*******************************')
         console.log('')
-        
+        winnerText = teamResult05.winner[1].toUpperCase()
     })
 
+worldFinal.cup(winnerText)
 
 } catch (error) {
     console.error('ERROR: ',error)
