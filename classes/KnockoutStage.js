@@ -53,17 +53,22 @@ export default class KnockoutStage {
             goals_B = this.generateGoals()
         }
         let winner = ''
+        let loser = ''
+        
         if(goals_A > goals_B){
             winner = match[0]
+            loser = match[1]
         } else {
             winner = match[1]
+            loser = match[0]
         }
         return{
             a_Team: match[0],
             goals_A,
             b_Team: match[1],
             goals_B,
-            winner
+            winner,
+            loser
         }
     }
     
