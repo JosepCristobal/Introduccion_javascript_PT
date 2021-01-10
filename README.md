@@ -1,12 +1,12 @@
 # Introducción a Javascript
-Entrega de práctica de Introducción a javascript BootCamp Web X
+Entrega de la práctica de Introducción a javascript BootCamp Web X
 
 ## World Cup Simulator
 
 La práctica consiste en desarrollar un simulador de la copa del mundo de fútbol
 
 ## El mundial de fútbol
-El campeonato del mundo de fútbol los disputan 32 equipos nacionales de diferentes paises y consta de dos fases:
+El campeonato del mundo de fútbol lo disputan 32 equipos nacionales de diferentes paises y consta de dos fases:
 
 * Fase de grupos
 * Fase de eliminatorias (playoff)
@@ -28,9 +28,9 @@ Tras jugar todos los partidos entre los equipos, tan sólo los dos primeros de c
 - La victoria supondrá ganar 3 puntos, el empate 1 y la derrota 0.
 - La clasificación de la fase de grupos se realizará bajo los siguientes criterios:
 	- Los equipos se ordenarán en función de los puntos ganados descendentemente.
-	- En caso de empate a puntos, será el primer equipo que haya ganado al otro en enfrentamiento entre ambos.
+	- En caso de empate a puntos, será el primer equipo que haya ganado al otro en el enfrentamiento entre ambos.
 	- En caso de empate, habrá ganado el que la diferencia de goles realizados y encajados sea mayor.
-	- Y si esto no fuera suficiente, será primero el equipo por orden alfabético.
+	- Y si esto no fuera suficiente para desempatar, será primero el equipo por orden alfabético.
 
 #### Requisitos con la fase de grupos
 
@@ -49,12 +49,12 @@ Tras jugar todos los partidos entre los equipos, tan sólo los dos primeros de c
 
 <p align="center">Información de equipos en cada grupo</p>
 <p align="center">
-<img src="https://github.com/JosepCristobal/Introduccion_javascript_PT/blob/master/Img/2021-01-10%20a%20las%2019.13.05.png?raw=true" alt="Equipos-Grupos" width="150"/>
+<img src="https://github.com/JosepCristobal/Introduccion_javascript_PT/blob/master/Img/2021-01-10%20a%20las%2019.13.05.png?raw=true" alt="Equipos-Grupos" width="180"/>
 </p>
 
 <p align="center">Planificación de partidos en cada grupo</p>
 <p align="center">
-<img src="https://github.com/JosepCristobal/Introduccion_javascript_PT/blob/master/Img/2021-01-10%20a%20las%2019.13.32.png?raw=true" alt="Planificación partidos" width="400"/>
+<img src="https://github.com/JosepCristobal/Introduccion_javascript_PT/blob/master/Img/2021-01-10%20a%20las%2019.13.32.png?raw=true" alt="Planificación partidos" width="600"/>
 </p>
 
 
@@ -94,7 +94,7 @@ Tras jugar todos los partidos entre los equipos, tan sólo los dos primeros de c
 
 La fase de eliminatorias la jugarán los 16 mejores equipos de la fase de grupos, en concreto, los dos primeros de cada grupo.
 
-En la fase de eliminatorias, no puede haber empates. En caso de haberlos, se deberá jugar hasta que un equipo finalmente gane.
+En la fase de eliminatorias, no pueden haber empates. En caso de haberlos, se deberá jugar hasta que un equipo finalmente gane.
 
 La segunda ronda de la fase de eliminatorias(cuartos de final) enfrentará a los 8 equipos ganadores de los partidos de la ronda anterior (octavos de final). Los ganadores de estos partidos pasarán a la siguiente ronda (semifinales).
 
@@ -102,7 +102,7 @@ Los equipos ganadores de las semifinales, pasarán a la final y los equipos perd
 
 #### Restricciones aplicadas
 
-Dos equipos que se hayan encontrado en la fase de grupos, no podrán volver a encontrarse en la fase de eliminatorias hasta el final. Para garantizar esto, los primeros equipos de los grupos A, B, C y D y los segundos equipos de los grupos E, F, G y H, irán por una lado del cuadro y los primeros equipos de los grupos E, F, G y H y los segundos equips de los grupos A, B, C y D irán por otro lado del cuadro.
+Dos equipos que se hayan encontrado en la fase de grupos, no podrán volver a encontrarse en la fase de eliminatorias hasta la final. Para garantizar esto, los primeros equipos de los grupos A, B, C y D y los segundos equipos de los grupos E, F, G y H, irán por una lado del cuadro y los primeros equipos de los grupos E, F, G y H y los segundos equips de los grupos A, B, C y D irán por otro lado del cuadro.
 
 <p align="center">Según el criterio de restricción aplicado, se han dividido los equipos en dos gurpos, grupo A y grupo B. El reparto quedará de la siguiente forma</p>
 <p align="center">
@@ -114,7 +114,7 @@ Dos equipos que se hayan encontrado en la fase de grupos, no podrán volver a en
 - El programa comenzará indicando con un mensaje que comienza el torneo.
 - El programa deberá mostrar los 16 equipos participantes en la fase de eliminatorias.(Se muestran en la imágen anterior).
 - A continuación se deberán mostrar los resultados de los partidos en las diferentes rondas (octavos de final, cuartos de final y semifinales), indicando qué equipos se clasificarán para la siguiente ronda (esto se mostrará desde octavos de final hasta semifinales).
-- Una vez finalizadas las semifinales, se mostrará el resultado del partido de tercer y cuarto puesto, que se juega entre equipos no clasificados para la final.
+- Una vez finalizadas las semifinales, se mostrará el resultado del partido del tercer y cuarto puesto, que se juega entre equipos no clasificados para la final.
 - Tras esto, se mostrará el resultado del partido de la final, anunciando posteriormente el equipo ganador como campeón del mundo. 
 
 
@@ -135,7 +135,7 @@ Después de dedicar muchas horas y perderme en mas de un bucle, creo que al fina
 
 Referente al código, he intentado aplicar todo lo aprendido en clase y he intentado que sea lo más legible posible. También he añadido comentarios para poder tener referencia de que hace cada función y método.
 
-Realmente, donde aprendes de verdad, es enfrentándote con práctica e intendado aplicar todo lo aprendido en clase.
+Realmente, donde aprendes de verdad, es enfrentándote con la práctica e intendado aplicar todo lo aprendido en clase.
 Ha sido una práctica muy interesante.
 
 Muchas gracias Alberto.
