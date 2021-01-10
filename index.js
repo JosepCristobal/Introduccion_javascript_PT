@@ -41,8 +41,8 @@ try {
             console.log(" ")
             console.log(`JORNADA ${i}`)
             matchDay.forEach(match => {
-                const home = match[0] != null ? match[0] : 'DESCANSA'
-                const away = match[1] != null ? match[1] : 'DESCANSA'
+                const home = match[0] != null ? match[0] : 'Undefined'
+                const away = match[1] != null ? match[1] : 'Undefined'
                 console.log(`${home} vs ${away}`)
             })
             i++
@@ -184,6 +184,8 @@ try {
     })
 
 worldFinal.cup(winnerText)
+
+//console.log(worldCup.searchMatch('Spain','Netherlands'))
 
 } catch (error) {
     console.error('ERROR: ',error)

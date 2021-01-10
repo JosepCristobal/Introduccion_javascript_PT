@@ -72,7 +72,7 @@ export default class GroupStage {
 
         while (step > 0 ? end >= start : end <= start) {
             this.range.push(String.fromCharCode(start))
-            start += step;
+            start += step
         }
     }
 

@@ -90,6 +90,8 @@ export default class KnockoutStage {
         }
         //console.table(this.matches)
     }
+
+
     cup(winner){
         const textWinner = this.centerText(winner,'_',14)
         // let wd = winner.length
