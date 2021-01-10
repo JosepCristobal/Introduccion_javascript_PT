@@ -215,19 +215,26 @@ export default class GroupStage {
             }
             for (const match of matchDay) {
                 const result = this.play(match)
+                
                 this.updateTeams(result)  // actualizamos los equipos con el resultado de partido
                 matchDaySummary.results.push(result)
             }
             // Calcular clasificación
-            this.getStandings()
+            // console.log("Antes de clasificar")
+            // console.log(matchDaySummary.results)
+            this.getStandings(matchDaySummary.results)
             matchDaySummary.standings = this.teams.map(team => Object.assign({}, team))
             // Guardar resumen de la jornada
             this.summaries.push(matchDaySummary)
         }
         this.summariesGroup.push(this.summaries)
         this.summaries = []
-    }
 
+         // Calcular clasificación
+        //this.getStandings()
+    }
+        // // Calcular clasificación
+        // this.getStandings()
     }
 
     getTeamNamesGroup(group) {
