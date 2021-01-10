@@ -3,54 +3,45 @@
 export default class KnockoutStage {
     constructor(name, teams=[], config={}) {
         this.name = name
-        // this.matchGroupsSchedule = []
-        // this.setup(config)
         this.setupTeamsA(teams)
-        //this.summaries = []
-        //this.summariesGroup = []
     }
 
     setupTeamsA(teamNames) {
+        //Generamos los equipos para la final, según el criterio que nos piden en la práctica en el punto B
+
         this.fTeamsA = []
         let numTeams = teamNames.length/2
-        //console.log(numTeams)
         for (let i = 0; i < numTeams ; i +=2 ) {
             let team =[] 
             team = teamNames[i]
             team[i,0] = 'A'
             this.fTeamsA.push(team)
-            //console.log(team)
             team = teamNames[i + numTeams]
             team[i,0] = 'A'
-            this.fTeamsA.push(team)
-            //console.log(team)   
+            this.fTeamsA.push(team)  
         }
         for (let i = 1; i < numTeams + 1 ; i +=2 ) {
             let team =[] 
             team = teamNames[i]
             team[i,0] = 'B'
             this.fTeamsA.push(team)
-            //console.log(team)
             team = teamNames[i + numTeams]
             team[i,0] = 'B'
-            this.fTeamsA.push(team)
-            //console.log(team)   
+            this.fTeamsA.push(team)  
         }
-        console.log(this.fTeamsA)
-
-        //Faltará el filter
+        console.log('')
+        console.log('Reparto de equipos en dos grupos')
+        console.table(this.fTeamsA)
        
-
-
     }
 
     play(match){
         let goals_A = 0
         let goals_B = 0
-
+        //No puede haber empate
         while (goals_A == goals_B) {
-            goals_A = this.generateGoals()
-            goals_B = this.generateGoals()
+            goals_A = Math.abs(this.generateGoals() - this.generateGoals())
+            goals_B = Math.abs(this.generateGoals() - this.generateGoals())
         }
         let winner = ''
         let loser = ''
@@ -88,25 +79,12 @@ export default class KnockoutStage {
             matchResult = this.play(match)
             this.matches.push(matchResult)
         }
-        //console.table(this.matches)
     }
 
 
     cup(winner){
         const textWinner = this.centerText(winner,'_',14)
-        // let wd = winner.length
-        // let etq = ''
-        // if (wd>=14){
-        //     etq = winner.substring(0,14)
-        // } else {
-        //     etq = winner
-        // }
-
-        // const caracter = 16 - wd
-        // const margen = Math.floor(caracter/2)
-        // const margenDer = (caracter % 2) + margen
-        // const textWinner = '_'.repeat(margen)+etq+'_'.repeat(margenDer)
-
+        
         console.log('________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶')
         console.log('________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶')
         console.log('___¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶')
@@ -148,7 +126,6 @@ export default class KnockoutStage {
         } else {
             etq = textCenter
         }
-
         const caracter = maxLength + 2 - wd
         const margen = Math.floor(caracter/2)
         const margenDer = (caracter % 2) + margen
